@@ -39,7 +39,6 @@ class FrontController extends Controller
 
         session([
             'serviceTypeId' => $request->input('service_type'),
-            'search_url' => $request->fullUrl(),
         ]);
 
         return view('front.search', [
@@ -56,5 +55,13 @@ class FrontController extends Controller
 
 
         return view('front.details', compact('carStore', 'carService'));
+    }
+
+    public function booking(CarStore $carStore)
+    {
+        $serviceTypeId = session()->get('serviceTypeId');
+        $carService = CarService::where('id', $serviceTypeId)->first();
+
+        return view('front.booking', compact('carStore', 'carService'));
     }
 }
