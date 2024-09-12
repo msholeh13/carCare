@@ -37,13 +37,10 @@ class FrontController extends Controller
 
         $city = City::findOrFail($cityId);
 
-        session()->put('serviceTypeId', $request->input('service_type'));
-
-        // return  [
-        //     'stores'        => $stores,
-        //     'carService'    => $carService,
-        //     'cityName'      => $city ? $city->name : 'Unkown City',
-        // ];
+        session([
+            'serviceTypeId' => $request->input('service_type'),
+            'search_url' => $request->fullUrl(),
+        ]);
 
         return view('front.search', [
             'stores'        => $stores,
@@ -52,8 +49,12 @@ class FrontController extends Controller
         ]);
     }
 
-    public function details()
+    public function details(CarStore $carStore)
     {
-        return '<h1>details page</h1>';
+        $serviceTypeId = session()->get('serviceTypeId');
+        $carService = CarService::where('id', $serviceTypeId)->first();
+
+
+        return view('front.details', compact('carStore', 'carService'));
     }
 }
