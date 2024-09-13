@@ -58,7 +58,9 @@
       </div>
     </div>
     <div class="flex h-full flex-1 mt-5">
-      <form action="{{ route('front.booking.store', [$carStore->slug, $carService->slug]) }}" class="w-full flex flex-col rounded-t-[30px] p-5 pt-[30px] gap-[26px] bg-white overflow-x-hidden mb-0 mt-auto" method="POST">
+
+      
+      <form method="POST" action="{{ route('front.booking.store', [$carStore->slug, $carService->slug]) }}" class="w-full flex flex-col rounded-t-[30px] p-5 pt-[30px] gap-[26px] bg-white overflow-x-hidden mb-0 mt-auto" >
         @csrf
         <div class="flex flex-col gap-2">
           <h2 class="font-semibold">Choose Day</h2>
@@ -127,7 +129,7 @@
             <div class="w-6 h-6 flex shrink-0 mr-[10px]">
               <img src="{{ asset('assets/images/icons/call.svg') }}" alt="icon">
             </div>
-            <input type="tel" name="phone_number" id="Name" class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#909DBF]" placeholder="What is your phone number" required>
+            <input type="tel" name="phone_number" id="phone_number" class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#909DBF]" placeholder="What is your phone number" required>
           </div>
         </div>
         <hr class="border-[#E9E8ED]">

@@ -24,6 +24,21 @@ class BookingTransaction extends Model
         'time_at',
     ];
 
+    protected $casts = [
+        'started_at' => 'date'
+    ];
+
+
+    public static function generateUniqueTrxId()
+    {
+        $prefix = 'CC';
+        do {
+            $randomString = $prefix . mt_rand(1000, 9999);
+        } while (self::where('trx_id', $randomString)->exists());
+
+        return $randomString;
+    }
+
     /**
      * Get the service_details that owns the BookingTransaction
      *
