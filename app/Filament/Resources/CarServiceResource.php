@@ -36,7 +36,6 @@ class CarServiceResource extends Resource
                 TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->step(10000)
                     ->prefix('IDR'),
 
                 TextInput::make('duration_in_hour')

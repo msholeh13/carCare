@@ -48,8 +48,7 @@ class BookingTransactionResource extends Resource
                 TextInput::make('total_amount')
                     ->required()
                     ->numeric()
-                    ->prefix('IDR')
-                    ->step(10000),
+                    ->prefix('IDR'),
 
                 DatePicker::make('started_at')
                     ->required(),
