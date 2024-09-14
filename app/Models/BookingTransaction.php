@@ -33,7 +33,7 @@ class BookingTransaction extends Model
     {
         $prefix = 'CC';
         do {
-            $randomString = $prefix . mt_rand(1000, 9999);
+            $randomString = $prefix . mt_rand(1000, 999999);
         } while (self::where('trx_id', $randomString)->exists());
 
         return $randomString;

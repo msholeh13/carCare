@@ -1,13 +1,6 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{asset('output.css')}}" rel="stylesheet">
-  <link href="{{ asset('main.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-</head>
-<body>
+@extends('front.layout.app')
+
+@section('content')
   <main class="bg-[#FAFAFA] max-w-[640px] mx-auto min-h-screen relative flex flex-col has-[#CTA-nav]:pb-[120px] has-[#Bottom-nav]:pb-[120px]">
     <div class="bg-[#270738] absolute top-0 max-w-[640px] w-full mx-auto rounded-b-[50px] h-[370px]"></div>
     <header class="flex flex-col gap-3 items-center text-center pt-10 relative z-10">
@@ -68,7 +61,7 @@
     <nav id="Bottom-nav" class="fixed bottom-0 w-full max-w-[640px] mx-auto border-t border-[#E9E8ED] p-[20px_24px] bg-white z-20">
       <ul class="flex items-center justify-evenly">
         <li>
-          <a href="index.html" class="flex flex-col items-center text-center gap-1">
+          <a href="{{ route('front.index') }}" class="flex flex-col items-center text-center gap-1">
             <div class="w-6 h-6 flex shrink-0 ">
               <img src="{{ asset('assets/images/icons/element-equal.svg') }}" alt="icon">
             </div>
@@ -76,7 +69,7 @@
           </a>
         </li>
         <li>
-          <a href="check-booking.html" class="flex flex-col items-center text-center gap-1">
+          <a href="{{ route('front.transactions') }}" class="flex flex-col items-center text-center gap-1">
             <div class="w-6 h-6 flex shrink-0 ">
               <img src="{{ asset('assets/images/icons/note-favorite-grey.svg') }}" alt="icon">
             </div>
@@ -102,18 +95,19 @@
       </ul>
     </nav>
   </main>
-</body>
+@endsection
 
+@push('before-script')
 <script>
-    document.querySelectorAll('.service-link').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const cityId = document.getElementById('city_id').value;
-            const serviceTypeId = this.getAttribute('data-service');
-
-            window.location.href = `/search?city_id=${cityId}&service_type=${serviceTypeId}`;
-        })
+  document.querySelectorAll('.service-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const cityId = document.getElementById('city_id').value;
+      const serviceTypeId = this.getAttribute('data-service');
+      
+      window.location.href = `/search?city_id=${cityId}&service_type=${serviceTypeId}`;
     })
-</script>
+  })
+  </script>
+@endpush
 
-</html>

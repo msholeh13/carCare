@@ -1,13 +1,6 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{asset('output.css')}}" rel="stylesheet">
-  <link href="{{ asset('main.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-</head>
-<body>
+@extends('front.layout.app')
+
+@section('content')
   <main class="bg-[#FAFAFA] max-w-[640px] mx-auto min-h-screen relative flex flex-col has-[#CTA-nav]:pb-[120px] has-[#Bottom-nav]:pb-[120px]">
     <div id="Top-nav" class="flex items-center justify-between px-4 pt-5">
       <a href="{{url()->previous()}}">
@@ -138,7 +131,8 @@
       </form>
     </div>
   </main>
+@endsection
 
-  <script src="{{asset('customjs/payment.js')}}"></script>
-</body>
-</html>
+@push('before-script')  
+<script src="{{asset('customjs/payment.js')}}"></script>
+@endpush
